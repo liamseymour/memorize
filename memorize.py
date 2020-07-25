@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import curses
 
@@ -47,12 +48,16 @@ def main(stdscr):
 				stdscr.clear()
 				word = 0
 				
-		except Exception as e:
+		except curses.error as e:
 			pass
 
 if __name__ == "__main__":
 
 	""" Start curses and begin game """
+
+	if (len(sys.argv) < 2):
+		print("Not enough arguments. Usage: memorize.py input.txt")
+		sys.exit()
 
 	stdscr = curses.initscr()
 	curses.noecho()
